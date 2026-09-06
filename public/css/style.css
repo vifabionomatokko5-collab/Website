@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #0a0a1a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 20px 30px;
+    border-bottom: 2px solid #ff6b00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .logo h1 {
+    font-size: 2rem;
+    color: #ff6b00;
+}
+
+header .logo h1 span {
+    color: #fff;
+}
+
+header .logo p {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    flex: 1;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #16213e, #1a1a2e);
+    border-radius: 16px;
+    border: 1px solid #ff6b00;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: #ff6b00;
+}
+
+.hero p {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.online {
+    background: #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.players-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    border: 1px solid #0f3460;
+}
+
+.players-section h2 {
+    color: #ff6b00;
+    margin-bottom: 15px;
+}
+
+.players-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.player-tag {
+    background: #1a1a2e;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #0f3460;
+    color: #aaa;
+}
+
+.ip-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #0f3460;
+    text-align: center;
+}
+
+.ip-section .ip-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.ip-section .ip-display code {
+    background: #1a1a2e;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    color: #00ff88;
+    border: 1px solid #0f3460;
+    font-family: monospace;
+}
+
+.ip-section .ip-display button {
+    background: #0f3460;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.ip-section .ip-display button:hover {
+    background: #1a4a7a;
+}
+
+.buttons-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.btn {
+    padding: 12px 35px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: #ff6b00;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #ff8c00;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #0f3460;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #1a4a7a;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: #00ff88;
+    color: #1a1a2e;
+}
+
+.btn-success:hover {
+    background: #00cc66;
+    transform: translateY(-2px);
+}
+
+.discord-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    border: 1px solid #0f3460;
+    text-align: center;
+}
+
+.discord-section h2 {
+    color: #ff6b00;
+    margin-bottom: 10px;
+}
+
+.discord-section a {
+    color: #00ff88;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.discord-section a:hover {
+    text-decoration: underline;
+}
+
+.info-section {
+    background: #16213e;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    border: 1px solid #0f3460;
+}
+
+.info-section h2 {
+    color: #ff6b00;
+    margin-bottom: 15px;
+}
+
+.info-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.info-section ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #0f3460;
+    color: #aaa;
+}
+
+.info-section ul li:last-child {
+    border-bottom: none;
+}
+
+.info-section ul li strong {
+    color: #fff;
+}
+
+footer {
+    background: #16213e;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #0f3460;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    header .logo h1 { font-size: 1.5rem; }
+    .hero h1 { font-size: 2rem; }
+    .status-container { flex-direction: column; align-items: center; }
+    .buttons-section { flex-direction: column; align-items: center; }
+    .ip-section .ip-display { flex-direction: column; }
+}
