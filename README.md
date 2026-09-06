@@ -1,5 +1,3 @@
----
-
 ```markdown
 # 🌵 Miragem SMP - Website Oficial
 
