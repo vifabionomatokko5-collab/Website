@@ -1,4 +1,3 @@
-```markdown
 # 🌵 Miragem SMP - Website Oficial
 
 Site oficial do servidor Minecraft **Miragem SMP**.
