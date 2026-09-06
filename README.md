@@ -82,6 +82,3 @@ Este projeto está licenciado sob a **MIT License** - veja o arquivo [LICENSE](L
 ---
 
 **© 2026 Miragem SMP** - Todos os direitos reservados
-```
-
----
