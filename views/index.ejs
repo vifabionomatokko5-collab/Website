@@ -26,8 +26,13 @@
         <!-- STATUS -->
         <div class="status-container">
             <div class="status-item">
-                <span class="status-dot online"></span>
-                <span>Servidor <strong>Online</strong></span>
+                <% if (server && server.online) { %>
+                    <span class="status-dot online"></span>
+                    <span>Servidor <strong>Online</strong></span>
+                <% } else { %>
+                    <span class="status-dot offline"></span>
+                    <span>Servidor <strong>Offline</strong></span>
+                <% } %>
             </div>
             <div class="status-item">
                 👥 <strong id="player-count">0</strong> / 100 jogadores online
@@ -141,6 +146,10 @@
                 document.getElementById('players-list').innerHTML = '<span style="color:#666;">Erro ao carregar</span>';
             }
         }
+
+        // ========== STATUS OFFLINE ==========
+        // O status é renderizado pelo servidor (EJS)
+        // Se o servidor estiver offline, mostra a mensagem
 
         // ========== ATUALIZAR A CADA 30 SEGUNDOS ==========
         updatePlayers();
