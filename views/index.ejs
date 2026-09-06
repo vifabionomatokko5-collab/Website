@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miragem SMP</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>🏪 <span>Miragem</span> SMP</h1>
+            <p>O melhor servidor Minecraft da América Latina!</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <h1>Bem-vindo ao <span>Miragem SMP</span></h1>
+            <p>O servidor Minecraft mais incrível que você já viu!</p>
+            <p style="color:#888;margin-top:10px;">⭐ Survival com eventos, ranks exclusivos e comunidade incrível!</p>
+        </section>
+
+        <!-- STATUS -->
+        <div class="status-container">
+            <div class="status-item">
+                <span class="status-dot online"></span>
+                <span>Servidor <strong>Online</strong></span>
+            </div>
+            <div class="status-item">
+                👥 <strong id="player-count">0</strong> / 100 jogadores online
+            </div>
+        </div>
+
+        <!-- PLAYERS LIST -->
+        <section class="players-section">
+            <h2>👤 Jogadores Online</h2>
+            <div class="players-list" id="players-list">
+                <span style="color:#666;">Carregando...</span>
+            </div>
+        </section>
+
+        <!-- IP DO SERVIDOR -->
+        <section class="ip-section">
+            <h2 style="color:#ff6b00;margin-bottom:15px;">🌐 Entre no Servidor</h2>
+            
+            <div style="margin-bottom:20px;">
+                <p style="color:#aaa;font-weight:bold;">☕ Java Edition</p>
+                <div class="ip-display">
+                    <code id="java-ip">sd-br2.blazebr.com:26978</code>
+                    <button onclick="copyIP('java-ip')">📋 Copiar IP</button>
+                </div>
+            </div>
+
+            <div style="margin-top:15px;">
+                <p style="color:#aaa;font-weight:bold;">📱 Bedrock Edition</p>
+                <div class="ip-display">
+                    <code id="bedrock-ip">sd-br2.blazebr.com</code>
+                    <button onclick="copyIP('bedrock-ip')">📋 Copiar IP</button>
+                </div>
+                <p style="color:#666;font-size:0.9rem;margin-top:5px;">Porta: <strong>26978</strong></p>
+            </div>
+
+            <p style="color:#666;margin-top:15px;font-size:0.9rem;">Versão: <strong>1.21.11</strong> | Java + Bedrock (Geyser)</p>
+        </section>
+
+        <!-- BOTÕES -->
+        <section class="buttons-section">
+            <a href="minecraft://?server=sd-br2.blazebr.com:26978" class="btn btn-success">🎮 Entrar no Servidor</a>
+            <a href="https://minecraft-payment-api.onrender.com" class="btn btn-primary" target="_blank">🛒 Visitar Loja</a>
+            <a href="https://discord.gg/W8E6eps2E6" class="btn btn-secondary" target="_blank">💬 Discord</a>
+        </section>
+
+        <!-- DISCORD -->
+        <section class="discord-section">
+            <h2>💬 Comunidade no Discord</h2>
+            <p style="color:#aaa;">Participe da nossa comunidade no Discord!</p>
+            <a href="https://discord.gg/W8E6eps2E6" target="_blank">https://discord.gg/W8E6eps2E6</a>
+        </section>
+
+        <!-- INFORMAÇÕES -->
+        <section class="info-section">
+            <h2>📋 Sobre o Servidor</h2>
+            <ul>
+                <li><strong>🔰 Modo:</strong> Survival</li>
+                <li><strong>👥 Comunidade:</strong> Ativa e amigável</li>
+                <li><strong>🎮 Versão:</strong> 1.21.11 (Java + Bedrock)</li>
+                <li><strong>🏆 Eventos:</strong> Semanais com premiações</li>
+                <li><strong>👑 Ranks:</strong> Exclusivos com perks incríveis</li>
+                <li><strong>🛒 Loja:</strong> Compre itens, ranks e chaves!</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 <strong>Miragem SMP</strong> - Todos os direitos reservados</p>
+        <p style="font-size:0.8rem;color:#444;">Powered by MinePay</p>
+    </footer>
+
+    <script>
+        // ========== COPIAR IP ==========
+        function copyIP(elementId) {
+            const ipElement = document.getElementById(elementId);
+            const ip = ipElement.textContent;
+            
+            navigator.clipboard.writeText(ip).then(() => {
+                const btn = ipElement.parentElement.querySelector('button');
+                btn.textContent = '✅ Copiado!';
+                setTimeout(() => {
+                    if (elementId === 'java-ip') {
+                        btn.textContent = '📋 Copiar IP';
+                    } else {
+                        btn.textContent = '📋 Copiar IP';
+                    }
+                }, 3000);
+            }).catch(() => {
+                alert('Selecione o IP e copie manualmente: ' + ip);
+            });
+        }
+
+        // ========== ATUALIZAR JOGADORES ONLINE ==========
+        async function updatePlayers() {
+            try {
+                const response = await fetch('/api/players');
+                const data = await response.json();
+                
+                document.getElementById('player-count').textContent = data.count || 0;
+                
+                const playersList = document.getElementById('players-list');
+                if (data.players && data.players.length > 0) {
+                    playersList.innerHTML = data.players.map(p => 
+                        `<span class="player-tag">${p}</span>`
+                    ).join('');
+                } else {
+                    playersList.innerHTML = '<span style="color:#666;">Nenhum jogador online</span>';
+                }
+            } catch (error) {
+                console.error('Erro ao buscar jogadores:', error);
+                document.getElementById('players-list').innerHTML = '<span style="color:#666;">Erro ao carregar</span>';
+            }
+        }
+
+        // ========== ATUALIZAR A CADA 30 SEGUNDOS ==========
+        updatePlayers();
+        setInterval(updatePlayers, 30000);
+    </script>
+</body>
+</html>
