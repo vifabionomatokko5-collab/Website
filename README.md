@@ -2,7 +2,7 @@
 
 Site oficial do servidor Minecraft **Miragem SMP**.
 
-![Miragem SMP Banner](/images/banner.png)
+![Miragem SMP Banner](/public/images/banner.png)
 
 ## 📋 Sobre o Servidor
 
